@@ -1,4 +1,7 @@
-use crate::animal::error::AnimalError;
+use crate::animal::{
+    error::AnimalError,
+    traits::{Birthday, Speak},
+};
 
 use super::Result;
 
@@ -19,21 +22,6 @@ impl Dog {
         Self {
             age,
             ..Default::default()
-        }
-    }
-
-    pub fn celebrate_birthday(&mut self) {
-        self.age = self.age + 1;
-        println!("Wiggly butt is {} wags old!", self.age);
-    }
-
-    pub fn speak(&self) -> Result<()> {
-        match self.bone.as_ref() {
-            Some(bone) => Err(Box::new(AnimalError::new(&format!(
-                "Dog can't speak because of the {:?} bone!",
-                bone
-            )))),
-            None => Ok(println!("Woof!")),
         }
     }
 
@@ -62,6 +50,25 @@ impl Dog {
             }
         };
         Ok(())
+    }
+}
+
+impl Birthday for Dog {
+    fn celebrate_birthday(&mut self) {
+        self.age = self.age + 1;
+        println!("Wiggly butt is {} wags old!", self.age);
+    }
+}
+
+impl Speak for Dog {
+    fn speak(&self) -> Result<()> {
+        match self.bone.as_ref() {
+            Some(bone) => Err(Box::new(AnimalError::new(&format!(
+                "Dog can't speak because of the {:?} bone!",
+                bone
+            )))),
+            None => Ok(println!("Woof!")),
+        }
     }
 }
 

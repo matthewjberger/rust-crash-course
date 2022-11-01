@@ -1,3 +1,4 @@
+use animal::traits::{Birthday, Speak};
 use cat::Cat;
 use dog::{Bone, BoneKind, Dog};
 
