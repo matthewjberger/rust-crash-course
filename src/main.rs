@@ -60,7 +60,18 @@ impl Dog {
         }
     }
 
-    fn receive_bone(&mut self, bone: Bone) -> Result<()> {
+    pub fn take_bone(&mut self) -> Option<Bone> {
+        println!("You attempt to take the bone!");
+        let result = self.bone.take();
+        if result.is_some() {
+            println!("You grab the bone! The dog stares at you, bewildered.");
+        } else {
+            println!("There was no bone to grab silly!");
+        }
+        result
+    }
+
+    pub fn receive_bone(&mut self, bone: Bone) -> Result<()> {
         match self.bone.as_ref() {
             Some(bone) => {
                 return Err(Box::new(AnimalError::new(&format!(
@@ -113,6 +124,11 @@ fn main() -> Result<()> {
     //
     // let bone = Bone::from(BoneKind::BaconFlavored);
     // dog.receive_bone(bone)?;
+
+    let _bone = dog.take_bone();
+
+    // Uncomment this to look silly by grabbing a bone that you know isn't there
+    // let _ = dog.take_bone();
 
     Ok(())
 }
