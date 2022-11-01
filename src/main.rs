@@ -112,7 +112,19 @@ enum BoneKind {
     PeanutButter,
 }
 
+struct Cat {
+    age: u8,
+}
+
+impl Default for Cat {
+    fn default() -> Self {
+        Self { age: 1 }
+    }
+}
+
 fn main() -> Result<()> {
+    let cat = Cat::default();
+
     let mut dog = Dog::new(8);
     dog.celebrate_birthday();
     dog.speak()?;
@@ -125,7 +137,10 @@ fn main() -> Result<()> {
     // let bone = Bone::from(BoneKind::BaconFlavored);
     // dog.receive_bone(bone)?;
 
-    let _bone = dog.take_bone();
+    let bone = dog.take_bone();
+    if let Some(bone) = bone.as_ref() {
+        println!("That's a high quality {:?} bone buddy!", bone);
+    }
 
     // Uncomment this to look silly by grabbing a bone that you know isn't there
     // let _ = dog.take_bone();
