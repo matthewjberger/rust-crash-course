@@ -1,11 +1,20 @@
 struct Dog {
     age: u8,
-    pub bone: Option<Bone>, // The dog may or may not be holding a Bone
+    bone: Option<Bone>, // The dog may or may not be holding a Bone
+}
+
+impl Default for Dog {
+    fn default() -> Self {
+        Self { age: 1, bone: None }
+    }
 }
 
 impl Dog {
     pub fn new(age: u8) -> Self {
-        Self { age, bone: None }
+        Self {
+            age,
+            ..Default::default()
+        }
     }
 
     pub fn celebrate_birthday(&mut self) {
