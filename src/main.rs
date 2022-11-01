@@ -9,7 +9,9 @@ mod dog;
 pub type Result<T, E = Box<dyn std::error::Error>> = std::result::Result<T, E>;
 
 fn main() -> Result<()> {
-    let cat = Cat::default();
+    let mut cat = Cat::default();
+    cat.celebrate_birthday();
+    cat.speak()?;
 
     let mut dog = Dog::new(8);
     dog.celebrate_birthday();
