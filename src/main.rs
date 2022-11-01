@@ -11,9 +11,14 @@ impl Dog {
         self.age = self.age + 1;
         println!("Wiggly butt is {} wags old!", self.age);
     }
+
+    pub fn speak(&self) {
+        println!("Woof!");
+    }
 }
 
 fn main() {
     let mut dog = Dog::new(8);
     dog.celebrate_birthday();
+    dog.speak();
 }
