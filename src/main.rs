@@ -1,3 +1,5 @@
+pub type Result<T, E = Box<dyn std::error::Error>> = std::result::Result<T, E>;
+
 struct Dog {
     age: u8,
     bone: Option<Bone>, // The dog may or may not be holding a Bone
@@ -43,8 +45,9 @@ enum BoneKind {
     PeanutButter,
 }
 
-fn main() {
+fn main() -> Result<()> {
     let mut dog = Dog::new(8);
     dog.celebrate_birthday();
     dog.speak();
+    Ok(())
 }
