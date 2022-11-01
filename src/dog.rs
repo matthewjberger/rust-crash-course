@@ -1,6 +1,6 @@
 use crate::animal::{
     error::AnimalError,
-    traits::{Birthday, Speak},
+    traits::{Animal, Birthday, Speak},
 };
 
 use super::Result;
@@ -71,6 +71,8 @@ impl Speak for Dog {
         }
     }
 }
+
+impl Animal for Dog {}
 
 #[derive(Debug)]
 pub(crate) struct Bone {

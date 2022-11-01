@@ -1,4 +1,4 @@
-use animal::traits::{Birthday, Speak};
+use animal::traits::{Animal, Birthday, Speak};
 use cat::Cat;
 use dog::{Bone, BoneKind, Dog};
 
@@ -32,6 +32,15 @@ fn main() -> Result<()> {
 
     // Uncomment this to look silly by grabbing a bone that you know isn't there
     // let _ = dog.take_bone();
+
+    let mut animals = Vec::new();
+
+    animals.push(Box::new(dog) as Box<dyn Animal>);
+    animals.push(Box::new(cat) as Box<dyn Animal>);
+
+    for animal in animals.iter() {
+        animal.speak()?;
+    }
 
     Ok(())
 }

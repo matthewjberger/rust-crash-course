@@ -1,7 +1,7 @@
 use crate::{
     animal::{
         error::AnimalError,
-        traits::{Birthday, Speak},
+        traits::{Animal, Birthday, Speak},
     },
     Result,
 };
@@ -37,3 +37,5 @@ impl Birthday for Cat {
         println!("Snooty face is {} furrowed brows old!", self.age);
     }
 }
+
+impl Animal for Cat {}
