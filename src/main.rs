@@ -1,3 +1,5 @@
+struct Dog;
+
 fn main() {
-    println!("Hello, world!");
+    let _dog = Dog {};
 }
