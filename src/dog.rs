@@ -1,4 +1,4 @@
-use crate::animal::AnimalError;
+use crate::animal::error::AnimalError;
 
 use super::Result;
 
